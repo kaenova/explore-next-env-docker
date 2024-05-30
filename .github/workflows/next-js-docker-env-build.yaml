@@ -1,5 +1,10 @@
 name: Next Build Environment Github Secret
 
+on:
+  push:
+    branches:
+      - "main"
+
 env:
   TAGS: ${{ github.sha }}
 
