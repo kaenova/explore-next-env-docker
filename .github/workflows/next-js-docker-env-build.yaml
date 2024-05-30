@@ -22,7 +22,7 @@ jobs:
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USER }} --password-stdin
 
       - name: Build Docker Image
-        run: docker build --tag "$DOCKER_REPOSITORY:$TAGS" --tag "$DOCKER_REPOSITORY:latest" -f Dockerfile --build-tag ENV_FILE="${{ secrets.ENV_FILE_GITHUB }}" .
+        run: docker build --tag "$DOCKER_REPOSITORY:$TAGS" --tag "$DOCKER_REPOSITORY:latest" -f Dockerfile --build-arg ENV_FILE="${{ secrets.ENV_FILE_GITHUB }}" .
 
       - name: Dockerhub Push
         run: docker push "$DOCKER_REPOSITORY" --all-tags
